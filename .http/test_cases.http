@@ -1,0 +1,34 @@
+### Create Account
+PATCH localhost:8080/create-account
+Content-Type: application/json
+
+{
+  "currency": "EUR"
+}
+> {%
+    client.global.set("accountId", response.body.id);
+%}
+
+### Get Account By Id
+GET localhost:8080/get-account/{{accountId}}
+Content-Type: application/json
+
+### Incoming Transaction
+POST localhost:8080/incoming-transaction
+Content-Type: application/json
+
+{
+  "accountId": "{{accountId}}",
+  "currency": "EUR",
+  "amount": 12.34
+}
+
+### Outgoing Transaction
+POST localhost:8080/outgoing-transaction
+Content-Type: application/json
+
+{
+  "accountId": "{{accountId}}",
+  "currency": "EUR",
+  "amount": 12.34
+}
